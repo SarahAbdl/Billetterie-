@@ -1,0 +1,19 @@
+# Billetterie-
+Présetation Java
+
+Chaque binôme/trinôme présentera en 5 min. à l'enseignant son application logicielle en ayant en tête les attentes suivantes:
+
+utilisation des interfaces graphiques en Java, traitement des exceptions, 
+au choix: utilisation d'une BD relationnelle avec JDBC ou de fichiers soit au format JSON, soit au format XML,
+mise en place de tests et utilisation de JUnit
+utilisation de quelques patrons de conception
+respect de la loi de Demeter
+présentation de la gestion agile de projet (choix de la méthode et des outils)
+mise en oeuvre de quelques principes de l'intégration continue et utilisation a minima de Git ou Github (voire d'autres outils).
+Ce travail sera soumis à évaluation.
+
+Il s'agit d'une démo: il n'y a pas de fichier à remettre pour ce travail !
+
+Cahier des charges de l'application à réaliser: application de gestion de billets de concerts (idem Semestre 7 en Technologies Web), sinon que l'application est à réaliser uniquement en Java et en mode non-Web, que les concerts, les billets achetés sont stockés soit dans une BD relationnelle ou dans des fichiers (au choix au format JSON ou XML).
+
+Ce cahier des charges est volontairement imprécis vous laissant un degré de liberté dans vos dveloppements et vos choix.
