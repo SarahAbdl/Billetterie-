@@ -1,48 +1,53 @@
-package billeterie;
+package billetterie;
 
-public class ZDialogInfo {
-	  private String nom, prenom, civilite, place, concert, mail;
+public class FDialogInfo {
+	  private static String nom;
+	private static String prenom;
+	private static String civilite;
+	private static String place;
+	private static String concert;
+	private static String mail;
 	  
 
-	  public String getNom() {
+	  public static String getNom() {
 		return nom;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getPrenom() {
+	public static String getPrenom() {
 		return prenom;
 	}
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public String getCivilite() {
+	public static String getCivilite() {
 		return civilite;
 	}
 	public void setCivilite(String civilite) {
 		this.civilite = civilite;
 	}
-	public String getPlace() {
+	public static String getPlace() {
 		return place;
 	}
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	public String getConcert() {
+	public static String getConcert() {
 		return concert;
 	}
 	public void setConcert(String concert) {
 		this.concert = concert;
 	}
-	public String getMail() {
+	public static String getMail() {
 		return mail;
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
 	
-	public ZDialogInfo(){}
-	  public ZDialogInfo(String civilite, String nom, String prenom, String mail, String place, String concert){
+	public FDialogInfo(){}
+	  public FDialogInfo(String civilite, String nom, String prenom, String mail, String place, String concert){
 	    this.civilite = civilite;
 	    this.nom = nom;
 	    this.prenom=prenom; 
