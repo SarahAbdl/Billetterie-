@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.BorderFactory;
-//import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -48,26 +47,20 @@ public class FDialog extends JDialog {
   
 
  private void initComponent(){
-//    //Ic√¥ne
-//    icon = new JLabel(new ImageIcon("images/icone.jpg"));
-//    JPanel panIcon = new JPanel();
-//    panIcon.setBackground(Color.white);
-//    panIcon.setLayout(new BorderLayout());
-//    panIcon.add(icon);
-	 
-	//Civilit√©
+
+	//CivilitÈ
 	    JPanel panCivilite = new JPanel();
 	    panCivilite.setBackground(Color.white);
 	    panCivilite.setPreferredSize(new Dimension(220, 100));
-	    panCivilite.setBorder(BorderFactory.createTitledBorder("Civilit√©"));
+	    panCivilite.setBorder(BorderFactory.createTitledBorder("CivilitÈ"));
 	    civilite = new JComboBox();
 	    civilite.addItem("Mme");
 	    civilite.addItem("Mr");
-	    civiliteLabel = new JLabel("Civilit√© :  ");
+	    civiliteLabel = new JLabel("CivilitÈ :  ");
 	    panCivilite.add(civiliteLabel);
 	    panCivilite.add(civilite);
 
-    //Le nom
+    
     JPanel panNom = new JPanel(); 
     panNom.setBackground(Color.white);
     panNom.setPreferredSize(new Dimension(250, 150));
@@ -78,18 +71,18 @@ public class FDialog extends JDialog {
     panNom.add(nomLabel);
     panNom.add(nom);
 
-  //Le prenoms
+
     JPanel panPrenom = new JPanel();
     panPrenom.setBackground(Color.white);
     panPrenom.setPreferredSize(new Dimension(250, 150));
     prenom = new JTextField();
     prenom.setPreferredSize(new Dimension(200, 60));
     panPrenom.setBorder(BorderFactory.createTitledBorder("Prenom"));
-    prenomLabel = new JLabel("Saisir un pr√©nom :");
+    prenomLabel = new JLabel("Saisir un prÈnom :");
     panPrenom.add(prenomLabel);
     panPrenom.add(prenom);
     
-  //Le mail 
+  
     JPanel panMail = new JPanel();
     panMail.setBackground(Color.white);
     panMail.setPreferredSize(new Dimension(250, 150));
@@ -101,7 +94,7 @@ public class FDialog extends JDialog {
     panMail.add(mail);
     
     
-    //place
+    
     JPanel panPlace = new JPanel();
     panPlace.setBackground(Color.white);
     panPlace.setBorder(BorderFactory.createTitledBorder("Place : "));
@@ -117,7 +110,7 @@ public class FDialog extends JDialog {
     panPlace.add(place2);
     
 
-    //Concert
+    
     JPanel panConcert = new JPanel();
     panConcert.setBackground(Color.white);
     panConcert.setPreferredSize(new Dimension(220, 100));
@@ -162,12 +155,19 @@ public class FDialog extends JDialog {
     	      
     	      System.out.println("Connexion effective !");  
     	      
+    	      
+    	      
+    	      
+    	      
+    	      
+    	      
+    	      
     	        Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
     			
     	        	state.executeUpdate("INSERT INTO billets (civilite, prenom, nom, mail, concert, place) VALUES('"+FDialogInfo.getCivilite()
     	        		+"','"+FDialogInfo.getPrenom()+"','"+FDialogInfo.getNom()+"','"+FDialogInfo.getMail()+"','"+FDialogInfo.getConcert()+"','"+FDialogInfo.getPlace()+"')");
     	        
-    	        		System.out.println("Informations rentr√©es dans la BDD");
+    	        		System.out.println("Informations rentrÈes dans la BDD");
     	      } 
     	 catch (Exception e) {
     		 e.printStackTrace();
@@ -197,7 +197,7 @@ public class FDialog extends JDialog {
     control.add(okBouton);
     control.add(cancelBouton);
 
-    //this.getContentPane().add(panIcon, BorderLayout.WEST);
+   
     this.getContentPane().add(content, BorderLayout.CENTER);
     this.getContentPane().add(control, BorderLayout.SOUTH);
   }  
