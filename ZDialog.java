@@ -1,10 +1,17 @@
-package billeterie;
+package billetterie;
 
 import java.awt.BorderLayout;
+
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.BorderFactory;
 //import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,15 +24,15 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 
-public class ZDialog extends JDialog {
-  private ZDialogInfo zInfo = new ZDialogInfo();
+public class FDialog extends JDialog {
+  private FDialogInfo zInfo = new FDialogInfo();
   private boolean sendData;
   private JLabel nomLabel, prenomLabel, civiliteLabel, concertLabel, placeLabel, mailLabel;
   private JRadioButton place1, place2;
   private JComboBox civilite, concert;
   private JTextField nom, prenom, mail;
 
-  public ZDialog(JFrame parent, String title, boolean modal){
+  public FDialog(JFrame parent, String title, boolean modal){
     super(parent, title, modal);
     this.setSize(600, 800);
     this.setLocationRelativeTo(null);
@@ -34,7 +41,7 @@ public class ZDialog extends JDialog {
     this.initComponent();
   }
 
-  public ZDialogInfo showZDialog(){
+  public FDialogInfo showZDialog(){
     this.sendData = false;
     this.setVisible(true);      
     return this.zInfo;   }   
@@ -71,7 +78,7 @@ public class ZDialog extends JDialog {
     panNom.add(nomLabel);
     panNom.add(nom);
 
-  //Le prenom
+  //Le prenoms
     JPanel panPrenom = new JPanel();
     panPrenom.setBackground(Color.white);
     panPrenom.setPreferredSize(new Dimension(250, 150));
@@ -132,14 +139,40 @@ public class ZDialog extends JDialog {
     content.add(panMail);
     content.add(panPlace);    
     content.add(panConcert);
+    
+    
 
     JPanel control = new JPanel();
     JButton okBouton = new JButton("OK");
     
     okBouton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent arg0) {        
-        zInfo = new ZDialogInfo((String)civilite.getSelectedItem(),nom.getText(), prenom.getText(), mail.getText(), getPlace(), (String)concert.getSelectedItem() );
+        zInfo = new FDialogInfo((String)civilite.getSelectedItem(),nom.getText(), prenom.getText(), mail.getText(), getPlace(), (String)concert.getSelectedItem() );
         setVisible(false);
+
+    	try {
+    	      Class.forName("org.postgresql.Driver");
+    	      System.out.println("Driver O.K.");
+
+    	      String url = "jdbc:postgresql://localhost:5432/billets";
+    	      String user = "postgres";
+    	      String passwd = "sarahabd";
+    	      Connection conn = DriverManager.getConnection(url, user, passwd); 
+
+    	      
+    	      System.out.println("Connexion effective !");  
+    	      
+    	        Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+    			
+    	        	state.executeUpdate("INSERT INTO billets (civilite, prenom, nom, mail, concert, place) VALUES('"+FDialogInfo.getCivilite()
+    	        		+"','"+FDialogInfo.getPrenom()+"','"+FDialogInfo.getNom()+"','"+FDialogInfo.getMail()+"','"+FDialogInfo.getConcert()+"','"+FDialogInfo.getPlace()+"')");
+    	        
+    	        		System.out.println("Informations rentrées dans la BDD");
+    	      } 
+    	 catch (Exception e) {
+    		 e.printStackTrace();
+    	 	}
+     
       }
       public String Mail(){
         return (mail.getText().equals("")) ? "exemple@email.com" : mail.getText();
