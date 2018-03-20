@@ -2,8 +2,46 @@ package billeterie;
 
 public class ZDialogInfo {
 	  private String nom, prenom, civilite, place, concert, mail;
+	  
 
-	  public ZDialogInfo(){}
+	  public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public String getCivilite() {
+		return civilite;
+	}
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public String getConcert() {
+		return concert;
+	}
+	public void setConcert(String concert) {
+		this.concert = concert;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
+	public ZDialogInfo(){}
 	  public ZDialogInfo(String civilite, String nom, String prenom, String mail, String place, String concert){
 	    this.civilite = civilite;
 	    this.nom = nom;
